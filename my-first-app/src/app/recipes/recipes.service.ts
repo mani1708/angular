@@ -2,11 +2,10 @@ import { Recipes } from './recipes.model';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class RecipesService {
-
-    selectedRecipe = new EventEmitter<Recipes>();
 
     private recipes: Recipes[] = [
         new Recipes(
@@ -34,7 +33,7 @@ export class RecipesService {
         this.shoppingListserv.addIngredients(ingredients);
     }
 
-    findById(index:number){
-    return this.recipes[index];
+    findById(index: number) {
+        return this.recipes[index];
     }
 }
