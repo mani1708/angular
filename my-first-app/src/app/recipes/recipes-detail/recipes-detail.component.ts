@@ -16,7 +16,7 @@ export class RecipesDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
-      this.recipe=this.recipesServ.findById(this.id);
+      this.recipe = this.recipesServ.findById(this.id);
     })
   }
 
@@ -24,10 +24,14 @@ export class RecipesDetailComponent implements OnInit {
     this.recipesServ.addIngredientsToShoppingList(this.recipe.ingredients);
   }
 
-  onEditRecipe(){
+  onEditRecipe() {
     // this.router.navigate(['edit'],{relativeTo: this.route});
-    this.router.navigate(['../',this.id,'edit'],{relativeTo: this.route});
+    this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
+  }
 
+  onDeleteRecipe() {
+    this.recipesServ.deleteRecipie(this.id);
+    this.router.navigate(['/recipes']);
   }
 
 }
